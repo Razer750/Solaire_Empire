@@ -8,7 +8,7 @@
  * - Intégré par: Claude Sonnet 4.5
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './VideoHero.css';
 
 const VideoHero = () => {
@@ -16,6 +16,8 @@ const VideoHero = () => {
   const [branding, setBranding] = useState(null);
   const [activeVideo, setActiveVideo] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     loadVideoData();
@@ -74,6 +76,19 @@ const VideoHero = () => {
   };
 
   /**
+   * Détecte si une URL est une vidéo locale (MP4, WebM, etc.)
+   */
+  const isLocalVideo = (url) => {
+    if (!url) return false;
+    // Vérifie si c'est un chemin local ou un fichier vidéo
+    return url.startsWith('/') ||
+           url.startsWith('./') ||
+           url.endsWith('.mp4') ||
+           url.endsWith('.webm') ||
+           url.endsWith('.ogg');
+  };
+
+  /**
    * Extrait l'ID YouTube d'une URL
    */
   const getYouTubeId = (url) => {
@@ -82,10 +97,25 @@ const VideoHero = () => {
   };
 
   /**
+   * Gère la lecture/pause de la vidéo locale
+   */
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  /**
    * Gère le changement de vidéo active
    */
   const handleVideoChange = (video) => {
     setActiveVideo(video);
+    setIsPlaying(true); // Reset play state when changing video
   };
 
   if (loading) {
@@ -132,8 +162,28 @@ const VideoHero = () => {
       {/* Vidéo principale */}
       {activeVideo && (
         <div className="main-video-container">
-          <div className="video-wrapper">
-            {getYouTubeId(activeVideo.url) ? (
+          <div className="video-wrapper video-player-wrapper">
+            {isLocalVideo(activeVideo.url) ? (
+              <>
+                <video
+                  ref={videoRef}
+                  className="video-player-local"
+                  src={activeVideo.url}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                />
+                <button
+                  onClick={togglePlay}
+                  className="play-pause-btn"
+                  aria-label={isPlaying ? 'Pause' : 'Play'}
+                >
+                  {isPlaying ? '⏸️' : '▶️'}
+                </button>
+              </>
+            ) : getYouTubeId(activeVideo.url) ? (
               <iframe
                 className="video-player"
                 src={`https://www.youtube.com/embed/${getYouTubeId(activeVideo.url)}?autoplay=1&mute=1&loop=1&playlist=${getYouTubeId(activeVideo.url)}`}

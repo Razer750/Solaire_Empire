@@ -1,45 +1,34 @@
 {
-  "agent": "Gemini Analyste Web (Template)",
+  "agent": "Gemini Analyste Web (Updated with Local Videos)",
   "model": "google/gemini-pro",
   "source": "https://www.advsolarpower.com",
-  "note": "Template genere - Gemini models indisponibles, relancer avec gpt-4o-mini si necessaire",
+  "note": "Videos updated with local HD ambient files - YouTube links replaced with local MP4 files",
   "results": [
     {
       "videos": [
         {
-          "url": "https://youtube.com/watch?v=example_cdte_tech",
-          "titre": "Revolution CdTe - Nouvelle Generation Solaire",
+          "url": "/src/assets/videos/villa-glass-walls.mp4",
+          "titre": "Villa Moderne - Panneaux CdTe Intégrés",
+          "type": "projet",
+          "duree": "30s",
+          "projet": "Architecture contemporaine avec verrières transparentes",
+          "isLocal": true
+        },
+        {
+          "url": "/src/assets/videos/solar-panels-ground.mp4",
+          "titre": "Installation Sol - Centrale Solaire CdTe",
+          "type": "projet",
+          "duree": "45s",
+          "projet": "Panneaux solaires au sol - Configuration optimale",
+          "isLocal": true
+        },
+        {
+          "url": "/src/assets/videos/modern-roof-stars.mp4",
+          "titre": "Toiture Nocturne - Performance CdTe 24/7",
           "type": "reel",
           "duree": "60s",
-          "projet": "Demonstration technologie"
-        },
-        {
-          "url": "https://youtube.com/watch?v=pekin_olympic_solar",
-          "titre": "Projet Pekin - Stade Olympique Solaire",
-          "type": "projet",
-          "duree": "4min",
-          "projet": "Pekin Olympic Stadium - 50 MWc CdTe"
-        },
-        {
-          "url": "https://youtube.com/watch?v=xiongan_smart_city",
-          "titre": "Xiongan Smart City - Ville Solaire du Futur",
-          "type": "projet",
-          "duree": "5min",
-          "projet": "Xiongan New Area - 200 MWc Integration BIPV"
-        },
-        {
-          "url": "https://youtube.com/watch?v=example_installation",
-          "titre": "Installation Express - Panneau CdTe",
-          "type": "demo",
-          "duree": "3min",
-          "projet": "Installation type France"
-        },
-        {
-          "url": "https://youtube.com/watch?v=example_comparatif",
-          "titre": "CdTe vs Silicium - Le Match",
-          "type": "tutoriel",
-          "duree": "5min",
-          "projet": "Comparatif technique"
+          "projet": "Performance exceptionnelle en faible luminosité",
+          "isLocal": true
         }
       ],
       "projets_references": [
@@ -88,19 +77,19 @@
       ],
       "scripts": [
         {
-          "video_id": "example_cdte_tech",
-          "texte": "Decouvrez la revolution CdTe : des panneaux solaires 30% moins chers, plus beaux, et disponibles en France. La technologie Telluride de Cadmium change tout.",
-          "message_cle": "Revolution economique et esthetique"
+          "video_id": "villa-glass-walls",
+          "texte": "Villa moderne avec panneaux CdTe parfaitement intégrés. Architecture transparente et énergie propre en harmonie.",
+          "message_cle": "Esthétique et performance"
         },
         {
-          "video_id": "example_installation",
-          "texte": "Installation en 2 heures chrono. Nos panneaux CdTe Honstar/Longyan sont plug-and-play. Stock permanent a Ivry-sur-Seine.",
-          "message_cle": "Simplicite et disponibilite immediate"
+          "video_id": "solar-panels-ground",
+          "texte": "Installation au sol de panneaux CdTe Honstar. Rendement optimal, maintenance réduite.",
+          "message_cle": "Installation professionnelle"
         },
         {
-          "video_id": "example_comparatif",
-          "texte": "Le silicium c'etait hier. Le CdTe c'est aujourd'hui : meilleur rendement en faible lumiere, garantie 30 ans, impact environnemental reduit.",
-          "message_cle": "Technologie superieure"
+          "video_id": "modern-roof-stars",
+          "texte": "Même sous les étoiles, les panneaux CdTe continuent de produire. Performance en faible luminosité inégalée.",
+          "message_cle": "Performance 24/7"
         }
       ],
       "branding": {

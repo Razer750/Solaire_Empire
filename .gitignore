@@ -3,6 +3,10 @@
 *.env
 *.key
 credentials.json
+AWS_SECRETS.txt
+PUSH_TO_GITHUB.txt
+bucket-policy.json
+cloudfront-config.json
 
 # Build artifacts
 dist/
@@ -36,3 +40,18 @@ env/
 /tmp/
 *.bak
 *.old
+
+# Videos (optional - comment out if you want to commit videos to git)
+# src/assets/videos/*.mp4
+# src/assets/videos/*.webm
+# src/assets/videos/*.ogg
+
+# npm logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Package lock (optional)
+# package-lock.json

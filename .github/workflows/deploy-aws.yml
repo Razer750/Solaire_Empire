@@ -20,6 +20,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -27,49 +33,65 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Build site
+      - name: Install dependencies
         run: |
-          echo "Building Solaire Empire..."
-          mkdir -p dist/data dist/agents dist/components
+          echo "Installing npm dependencies..."
+          npm ci
 
-          # Copie des fichiers sources
-          cp src/index.html dist/
-          cp src/styles.css dist/
-          cp src/app.js dist/
+      - name: Build React app
+        run: |
+          echo "Building Solaire Empire with Vite..."
+          npm run build
+          echo "✓ Build complete!"
+          ls -lah dist/
+          du -sh dist/
 
-          # Copie des composants
-          cp -r src/components/* dist/components/
-
-          # Copie des données
-          if [ -f "data/catalogue.json" ]; then
-            cp data/catalogue.json dist/data/
-          fi
+      - name: Copy additional data files
+        run: |
+          # Copie les fichiers JSON dans dist si pas déjà inclus
+          mkdir -p dist/agents dist/data
 
           if [ -f "agents/results_gemini_web.json" ]; then
-            cp agents/results_gemini_web.json dist/agents/
+            cp agents/results_gemini_web.json dist/agents/ || true
           fi
 
-          echo "Build complete!"
-          ls -lah dist/
+          if [ -f "data/catalogue.json" ]; then
+            cp data/catalogue.json dist/data/ || true
+          fi
+
+          echo "✓ Data files copied"
 
       - name: Deploy to S3
         run: |
           echo "Deploying to S3 bucket: ${{ env.S3_BUCKET }}"
 
-          # Upload avec cache long pour assets statiques
+          # Upload vidéos avec headers optimisés (cache très long)
+          if [ -d "dist/assets/videos" ]; then
+            echo "Uploading video files..."
+            aws s3 sync dist/assets/videos/ s3://${{ env.S3_BUCKET }}/assets/videos/ \
+              --content-type "video/mp4" \
+              --cache-control "public, max-age=31536000, immutable" \
+              --metadata-directive REPLACE
+            echo "✓ Videos uploaded"
+          fi
+
+          # Upload autres assets avec cache (JS, CSS, images)
+          echo "Uploading assets..."
           aws s3 sync dist/ s3://${{ env.S3_BUCKET }}/ \
             --delete \
             --cache-control "public, max-age=31536000" \
             --exclude "*.html" \
-            --exclude "*.json"
+            --exclude "*.json" \
+            --exclude "assets/videos/*"
 
-          # Upload sans cache pour HTML et JSON (mises à jour immédiates)
+          # Upload HTML/JSON sans cache (mises à jour immédiates)
+          echo "Uploading HTML and JSON files..."
           aws s3 sync dist/ s3://${{ env.S3_BUCKET }}/ \
             --cache-control "no-cache, no-store, must-revalidate" \
             --include "*.html" \
             --include "*.json"
 
-          echo "S3 deployment complete!"
+          echo "✓ S3 deployment complete!"
 
       - name: Invalidate CloudFront Cache
         if: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID != '' }}

@@ -1,0 +1,31 @@
+{
+  "name": "immo_pulse",
+  "version": "1.0.0",
+  "description": "> Plateforme e-commerce photovoltaïque avec architecture multi-agents IA",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Razer750/Solaire_Empire.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Razer750/Solaire_Empire/issues"
+  },
+  "homepage": "https://github.com/Razer750/Solaire_Empire#readme",
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.4",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  }
+}
