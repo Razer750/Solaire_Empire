@@ -8,8 +8,15 @@ import os
 import json
 import requests
 from typing import Dict, List, Any
+from dotenv import load_dotenv
 
-OPENROUTER_API_KEY = "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"
+# Charger les variables d'environnement depuis .env
+load_dotenv()
+
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+if not OPENROUTER_API_KEY:
+    raise ValueError("❌ OPENROUTER_API_KEY manquante ! Créez un fichier .env avec votre clé.")
+
 OPENROUTER_BASE = "https://openrouter.ai/api/v1/chat/completions"
 
 class Agent:
