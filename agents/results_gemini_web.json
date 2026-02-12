@@ -1,0 +1,132 @@
+{
+  "agent": "Gemini Analyste Web (Template)",
+  "model": "google/gemini-pro",
+  "source": "https://www.advsolarpower.com",
+  "note": "Template genere - Gemini models indisponibles, relancer avec gpt-4o-mini si necessaire",
+  "results": [
+    {
+      "videos": [
+        {
+          "url": "https://youtube.com/watch?v=example_cdte_tech",
+          "titre": "Revolution CdTe - Nouvelle Generation Solaire",
+          "type": "reel",
+          "duree": "60s",
+          "projet": "Demonstration technologie"
+        },
+        {
+          "url": "https://youtube.com/watch?v=pekin_olympic_solar",
+          "titre": "Projet Pekin - Stade Olympique Solaire",
+          "type": "projet",
+          "duree": "4min",
+          "projet": "Pekin Olympic Stadium - 50 MWc CdTe"
+        },
+        {
+          "url": "https://youtube.com/watch?v=xiongan_smart_city",
+          "titre": "Xiongan Smart City - Ville Solaire du Futur",
+          "type": "projet",
+          "duree": "5min",
+          "projet": "Xiongan New Area - 200 MWc Integration BIPV"
+        },
+        {
+          "url": "https://youtube.com/watch?v=example_installation",
+          "titre": "Installation Express - Panneau CdTe",
+          "type": "demo",
+          "duree": "3min",
+          "projet": "Installation type France"
+        },
+        {
+          "url": "https://youtube.com/watch?v=example_comparatif",
+          "titre": "CdTe vs Silicium - Le Match",
+          "type": "tutoriel",
+          "duree": "5min",
+          "projet": "Comparatif technique"
+        }
+      ],
+      "projets_references": [
+        {
+          "nom": "Pekin Olympic Stadium Solar Array",
+          "localisation": "Beijing, China",
+          "puissance_mwc": 50,
+          "technologie": "CdTe Honstar/Longyan",
+          "annee": 2024,
+          "type": "Toiture commerciale",
+          "highlights": [
+            "50 MWc installation CdTe",
+            "Alimentation stade olympique",
+            "Performance record en climat urbain",
+            "Integration esthetique parfaite"
+          ]
+        },
+        {
+          "nom": "Xiongan New Area Smart City",
+          "localisation": "Xiongan, Hebei, China",
+          "puissance_mwc": 200,
+          "technologie": "CdTe BIPV Longyan",
+          "annee": 2024,
+          "type": "BIPV integration batiments",
+          "highlights": [
+            "200 MWc BIPV integration",
+            "Ville intelligente 100% solaire",
+            "Technologie CdTe 300 couleurs",
+            "Certification Classe A securite",
+            "Reference mondiale BIPV"
+          ]
+        },
+        {
+          "nom": "Shanghai Industrial Park",
+          "localisation": "Shanghai, China",
+          "puissance_mwc": 80,
+          "technologie": "CdTe Honstar",
+          "annee": 2023,
+          "type": "Entrepots logistiques",
+          "highlights": [
+            "80 MWc toitures industrielles",
+            "ROI 6 ans",
+            "Maintenance reduite 40%"
+          ]
+        }
+      ],
+      "scripts": [
+        {
+          "video_id": "example_cdte_tech",
+          "texte": "Decouvrez la revolution CdTe : des panneaux solaires 30% moins chers, plus beaux, et disponibles en France. La technologie Telluride de Cadmium change tout.",
+          "message_cle": "Revolution economique et esthetique"
+        },
+        {
+          "video_id": "example_installation",
+          "texte": "Installation en 2 heures chrono. Nos panneaux CdTe Honstar/Longyan sont plug-and-play. Stock permanent a Ivry-sur-Seine.",
+          "message_cle": "Simplicite et disponibilite immediate"
+        },
+        {
+          "video_id": "example_comparatif",
+          "texte": "Le silicium c'etait hier. Le CdTe c'est aujourd'hui : meilleur rendement en faible lumiere, garantie 30 ans, impact environnemental reduit.",
+          "message_cle": "Technologie superieure"
+        }
+      ],
+      "branding": {
+        "slogans": [
+          "La Revolution CdTe commence ici",
+          "Moins cher, Plus beau, Stock France",
+          "Solaire Empire - L'excellence Made in Innovation",
+          "CdTe : La nouvelle ere du photovoltaique"
+        ],
+        "arguments_vente": [
+          "Prix : -30% vs silicium traditionnel",
+          "Esthetique : Panneau noir uniforme premium",
+          "Stock : Disponible immediatement a Ivry (93)",
+          "Performance : Meilleur rendement en faible luminosite",
+          "Garantie : 25-30 ans performance",
+          "Eco : Empreinte carbone reduite",
+          "Made in : Fabrication chinoise Honstar/Longyan certifiee CE/TUV",
+          "Support : Equipe technique francophone 7j/7"
+        ],
+        "cibles": [
+          "Particuliers : Maisons individuelles, renovation energetique",
+          "Professionnels : PME, commerces, entrepots",
+          "Investisseurs : Projets photovoltaiques, centrales solaires",
+          "Installateurs : Reseau de partenaires agrees"
+        ]
+      }
+    }
+  ]
+}

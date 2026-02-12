@@ -1,0 +1,100 @@
+name: Deploy Solaire Empire to AWS
+
+on:
+  push:
+    branches:
+      - main
+      - production
+  workflow_dispatch:  # Permet déclenchement manuel
+
+env:
+  AWS_REGION: eu-west-3
+  S3_BUCKET: solaire-empire-prod
+
+jobs:
+  deploy:
+    name: Deploy to AWS S3 + CloudFront
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Build site
+        run: |
+          echo "Building Solaire Empire..."
+          mkdir -p dist/data dist/agents dist/components
+
+          # Copie des fichiers sources
+          cp src/index.html dist/
+          cp src/styles.css dist/
+          cp src/app.js dist/
+
+          # Copie des composants
+          cp -r src/components/* dist/components/
+
+          # Copie des données
+          if [ -f "data/catalogue.json" ]; then
+            cp data/catalogue.json dist/data/
+          fi
+
+          if [ -f "agents/results_gemini_web.json" ]; then
+            cp agents/results_gemini_web.json dist/agents/
+          fi
+
+          echo "Build complete!"
+          ls -lah dist/
+
+      - name: Deploy to S3
+        run: |
+          echo "Deploying to S3 bucket: ${{ env.S3_BUCKET }}"
+
+          # Upload avec cache long pour assets statiques
+          aws s3 sync dist/ s3://${{ env.S3_BUCKET }}/ \
+            --delete \
+            --cache-control "public, max-age=31536000" \
+            --exclude "*.html" \
+            --exclude "*.json"
+
+          # Upload sans cache pour HTML et JSON (mises à jour immédiates)
+          aws s3 sync dist/ s3://${{ env.S3_BUCKET }}/ \
+            --cache-control "no-cache, no-store, must-revalidate" \
+            --include "*.html" \
+            --include "*.json"
+
+          echo "S3 deployment complete!"
+
+      - name: Invalidate CloudFront Cache
+        if: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID != '' }}
+        run: |
+          echo "Invalidating CloudFront cache..."
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
+          echo "CloudFront cache invalidated!"
+
+      - name: Deployment Summary
+        run: |
+          echo "================================"
+          echo "✓ Deployment successful!"
+          echo "================================"
+          echo "S3 Bucket: s3://${{ env.S3_BUCKET }}"
+          echo "Region: ${{ env.AWS_REGION }}"
+          echo "Website URL: http://${{ env.S3_BUCKET }}.s3-website.${{ env.AWS_REGION }}.amazonaws.com"
+          if [ ! -z "${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}" ]; then
+            echo "CloudFront: Distribution ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} invalidated"
+          fi
+          echo "================================"
+
+      - name: Notify Deployment (optionnel)
+        if: always()
+        run: |
+          echo "Deployment status: ${{ job.status }}"
+          # Ajouter ici notification Slack/Discord si souhaité

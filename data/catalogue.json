@@ -1,0 +1,52 @@
+{
+  "produits": [
+    {
+      "ref": "HS-1234",
+      "marque": "Honstar",
+      "puissance_w": 150,
+      "technologie": "CdTe",
+      "prix_ht": 100,
+      "stock_france": true,
+      "specs": {
+        "rendement": "17%",
+        "dimensions": "1200x600mm",
+        "garanties": "10 ans produit, 25 ans performance"
+      },
+      "arguments": [
+        "Moins cher",
+        "Plus esthétique",
+        "Made in China mais stock Ivry"
+      ]
+    },
+    {
+      "ref": "LY-5678",
+      "marque": "Longyan",
+      "puissance_w": 200,
+      "technologie": "CdTe",
+      "prix_ht": 120,
+      "stock_france": false,
+      "specs": {
+        "rendement": "18%",
+        "dimensions": "1300x650mm",
+        "garanties": "12 ans produit, 30 ans performance"
+      },
+      "arguments": [
+        "Efficacité accrue",
+        "Certification TÜV",
+        "Innovant"
+      ]
+    }
+  ],
+  "revolution_cdte": {
+    "avantages": [
+      "Meilleur rendement en faible luminosité",
+      "Coût de production inférieur",
+      "Impact environnemental réduit"
+    ],
+    "comparatif_silicium": {
+      "rendement": "CdTe généralement inférieur en conditions idéales mais meilleur en faible lumière",
+      "coût": "CdTe est plus économique",
+      "durabilité": "CdTe offre de meilleures garanties de performance à long terme"
+    }
+  }
+}

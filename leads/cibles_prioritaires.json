@@ -1,0 +1,120 @@
+{
+  "cibles": [
+    {
+      "categorie": "ARCHITECTES",
+      "sous_types": [
+        "Cabinets spécialisés BIPV",
+        "Bureaux d'études énergétiques",
+        "Architectes HQE/BREEAM"
+      ],
+      "pain_points": [
+        "Intégration esthétique des panneaux solaires",
+        "Conformité aux normes environnementales",
+        "Optimisation des performances énergétiques"
+      ],
+      "notre_solution": "Nos panneaux solaires CdTe offrent une intégration esthétique tout en garantissant des performances optimales et une conformité aux normes HQE/BREEAM.",
+      "arguments_cles": [
+        "Esthétique améliorée des panneaux",
+        "Performances en faible lumière",
+        "Coûts réduits de 30%"
+      ],
+      "decision_makers": "Architecte principal",
+      "budget_moyen": "100 000 - 500 000 €",
+      "cycle_vente": "Moyen",
+      "priorite": 4
+    },
+    {
+      "categorie": "PROMOTEURS IMMOBILIERS",
+      "sous_types": [
+        "Logement neuf (RE2020)",
+        "Rénovation énergétique",
+        "Immobilier tertiaire"
+      ],
+      "pain_points": [
+        "Conformité aux nouvelles réglementations (RE2020)",
+        "Pression pour réduire les coûts de construction",
+        "Besoin d'améliorer l'attractivité des biens immobiliers"
+      ],
+      "notre_solution": "Nos panneaux solaires à prix réduit permettent de respecter les normes RE2020 tout en augmentant la valeur des biens immobiliers.",
+      "arguments_cles": [
+        "Réduction des coûts de construction de 30%",
+        "Amélioration de l'efficacité énergétique",
+        "Augmentation de la valeur locative"
+      ],
+      "decision_makers": "Directeur de projet",
+      "budget_moyen": "500 000 - 2 000 000 €",
+      "cycle_vente": "Long",
+      "priorite": 5
+    },
+    {
+      "categorie": "INSTALLATEURS RGE",
+      "sous_types": [
+        "Électriciens QualiPV",
+        "Couvreurs + solaire",
+        "Entreprises générales bâtiment"
+      ],
+      "pain_points": [
+        "Concurrence accrue avec d'autres installateurs",
+        "Nécessité d'offrir des solutions innovantes",
+        "Gestion des stocks et logistique"
+      ],
+      "notre_solution": "Nos panneaux solaires en stock à Ivry assurent une disponibilité rapide et un prix compétitif pour les installateurs.",
+      "arguments_cles": [
+        "Disponibilité immédiate des produits",
+        "Économie de 30% sur les coûts",
+        "Meilleure performance en conditions de faible lumière"
+      ],
+      "decision_makers": "Chef de projet installation",
+      "budget_moyen": "50 000 - 250 000 €",
+      "cycle_vente": "Court",
+      "priorite": 4
+    },
+    {
+      "categorie": "ENTREPRISES B2B",
+      "sous_types": [
+        "PME/ETI avec toitures",
+        "Centres commerciaux",
+        "Entrepôts logistiques",
+        "Agriculteurs (hangars)"
+      ],
+      "pain_points": [
+        "Réduire les coûts énergétiques",
+        "Valoriser les espaces inutilisés",
+        "Se conformer aux réglementations environnementales"
+      ],
+      "notre_solution": "Nos panneaux solaires permettent de valoriser les toitures tout en réduisant les factures d'énergie et en respectant les normes.",
+      "arguments_cles": [
+        "Économies significatives sur les coûts énergétiques",
+        "Utilisation optimale des surfaces disponibles",
+        "Réduction des coûts d'installation"
+      ],
+      "decision_makers": "Directeur des opérations",
+      "budget_moyen": "100 000 - 500 000 €",
+      "cycle_vente": "Moyen",
+      "priorite": 3
+    },
+    {
+      "categorie": "COLLECTIVITÉS",
+      "sous_types": [
+        "Mairies (bâtiments publics)",
+        "Bailleurs sociaux",
+        "Zones d'activités"
+      ],
+      "pain_points": [
+        "Budget limité pour les projets publics",
+        "Besoins en énergie renouvelable",
+        "Pression pour réduire l'empreinte carbone"
+      ],
+      "notre_solution": "Nos solutions photovoltaïques à coût réduit permettent de répondre aux exigences environnementales tout en respectant les contraintes budgétaires.",
+      "arguments_cles": [
+        "Solutions rentables pour le secteur public",
+        "Aide à la transition énergétique",
+        "Réduction de l'empreinte carbone"
+      ],
+      "decision_makers": "Responsable des projets d'énergie",
+      "budget_moyen": "150 000 - 750 000 €",
+      "cycle_vente": "Long",
+      "priorite": 5
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "project": "solaire-empire",
+  "environment": "production",
+  "region": "eu-west-3",
+  "comment": "Paris (eu-west-3) pour proximite avec stock Ivry (94)",
+
+  "s3": {
+    "bucket_name": "solaire-empire-prod",
+    "website_config": {
+      "index_document": "index.html",
+      "error_document": "index.html"
+    },
+    "cors": [
+      {
+        "allowed_origins": ["*"],
+        "allowed_methods": ["GET", "HEAD"],
+        "allowed_headers": ["*"],
+        "max_age_seconds": 3600
+      }
+    ],
+    "public_access": true,
+    "versioning": true
+  },
+
+  "cloudfront": {
+    "enabled": true,
+    "price_class": "PriceClass_100",
+    "comment": "Distribution CloudFront pour Solaire Empire",
+    "default_root_object": "index.html",
+    "custom_error_responses": [
+      {
+        "error_code": 404,
+        "response_code": 200,
+        "response_page_path": "/index.html"
+      },
+      {
+        "error_code": 403,
+        "response_code": 200,
+        "response_page_path": "/index.html"
+      }
+    ],
+    "cache_behavior": {
+      "viewer_protocol_policy": "redirect-to-https",
+      "allowed_methods": ["GET", "HEAD", "OPTIONS"],
+      "cached_methods": ["GET", "HEAD"],
+      "compress": true,
+      "default_ttl": 86400,
+      "max_ttl": 31536000,
+      "min_ttl": 0
+    },
+    "ssl_certificate": {
+      "cloudfront_default_certificate": true,
+      "minimum_protocol_version": "TLSv1.2_2021"
+    }
+  },
+
+  "route53": {
+    "enabled": false,
+    "domain": "solaire-empire.fr",
+    "comment": "A configurer apres achat domaine"
+  },
+
+  "build": {
+    "source_dir": "src",
+    "output_dir": "dist",
+    "commands": [
+      "echo 'Build static site'",
+      "cp -r src/* dist/",
+      "echo 'Build complete'"
+    ]
+  },
+
+  "ci_cd": {
+    "enabled": false,
+    "trigger": "push_to_main",
+    "comment": "GitHub Actions ou AWS CodePipeline a configurer"
+  },
+
+  "monitoring": {
+    "cloudwatch": {
+      "enabled": true,
+      "logs_retention_days": 30
+    },
+    "alarms": {
+      "enabled": true,
+      "email": "admin@solaire-empire.fr"
+    }
+  },
+
+  "security": {
+    "waf": {
+      "enabled": false,
+      "comment": "Web Application Firewall - optionnel"
+    },
+    "encryption": {
+      "s3_encryption": "AES256",
+      "cloudfront_https_only": true
+    }
+  },
+
+  "cost_estimate_monthly": {
+    "s3": {
+      "storage_gb": 1,
+      "requests": 100000,
+      "cost_usd": 0.5
+    },
+    "cloudfront": {
+      "data_transfer_gb": 100,
+      "requests": 1000000,
+      "cost_usd": 10
+    },
+    "route53": {
+      "hosted_zone": 0.5,
+      "queries": 1
+    },
+    "total_estimated_usd": 12,
+    "comment": "Estimation pour trafic modere (10k visiteurs/mois)"
+  }
+}

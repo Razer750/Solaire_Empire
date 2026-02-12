@@ -1,0 +1,38 @@
+# Sensitive files
+.claude/settings.local.json
+*.env
+*.key
+credentials.json
+
+# Build artifacts
+dist/
+*.log
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node modules (if added later)
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+
+# Temporary files
+/tmp/
+*.bak
+*.old
